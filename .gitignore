@@ -153,5 +153,7 @@ sketch
 
 ./frontend/.node_modules
 ./backend/.node_modules
+./frontend/.env
+./backend/.env
 
 # End of https://www.toptal.com/developers/gitignore/api/react,node
