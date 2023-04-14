@@ -151,4 +151,7 @@ psd
 thumb
 sketch
 
+./frontend/.node_modules
+./backend/.node_modules
+
 # End of https://www.toptal.com/developers/gitignore/api/react,node
