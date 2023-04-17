@@ -28,12 +28,13 @@ function Form() {
   };
 
   const handleSubmit = (e) => {
+    console.log("here");
     e.preventDefault();
     addIncome(inputData);
   };
 
   return (
-    <Container onSubmit={handleSubmit}>
+    <Container>
       <InputContainer>
         <input
           type="text"
@@ -103,6 +104,7 @@ function Form() {
           bRad="30px"
           bg="var(--color-accent)"
           color="#fff"
+          onClick={handleSubmit}
         />
       </div>
     </Container>

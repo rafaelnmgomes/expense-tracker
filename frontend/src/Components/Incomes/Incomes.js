@@ -7,11 +7,13 @@ import {
   Container,
   Content,
   IncomeContainer,
+  Total,
   TotalContainer,
 } from "./Incomes.styled";
 
 function Incomes() {
-  const { addIncome, incomes, getIncomes, deleteIncome } = useGlobalContext();
+  const { addIncome, incomes, getIncomes, deleteIncome, totalIncome } =
+    useGlobalContext();
 
   useEffect(() => {
     getIncomes();
@@ -21,7 +23,9 @@ function Incomes() {
     <Container>
       <InnerLayout>
         <h1>Incomes</h1>
-        <TotalContainer></TotalContainer>
+        <TotalContainer>
+          Total Income: <Total>${totalIncome()}</Total>
+        </TotalContainer>
         <Content>
           <div>
             <Form addIncome={addIncome} />
