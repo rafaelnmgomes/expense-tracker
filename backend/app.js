@@ -19,9 +19,13 @@ readdirSync("./routes").map((route) =>
 
 const server = () => {
   db();
-  app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-  });
+  if (process.env.PORT) {
+    app.listen(process.env.PORT, () => {
+      console.log(`Server is running on port ${process.env.PORT}`);
+    });
+  }
 };
 
 server();
+
+module.exports = { server };
