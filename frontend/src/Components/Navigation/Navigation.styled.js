@@ -57,7 +57,7 @@ export const MenuItem = styled.li`
   grid-template-columns: 40px auto;
   align-items: center;
   margin: 0.6rem 0;
-  font-weight: 500;
+  font-weight: ${(props) => (props.isActive ? "700" : "500")};
   cursor: pointer;
   transition: all 0.4s ease-in-out;
   color: rgba(34, 34, 96, 0.6);

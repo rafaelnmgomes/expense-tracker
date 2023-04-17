@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import styled from "styled-components";
+import React from "react";
 import { signout } from "../../utils/icons";
 import { menuItems } from "../../utils/menuItems";
 import avatar from "../../img/avatar.png";
@@ -16,9 +15,7 @@ import {
   Username,
 } from "./Navigation.styled";
 
-function Navigation() {
-  const [active, setActive] = useState(0);
-
+function Navigation({ active, setActive }) {
   return (
     <NavStyled>
       <UserContainer>
@@ -31,7 +28,11 @@ function Navigation() {
       <MenuItems>
         {menuItems.map((item) => {
           return (
-            <MenuItem key={item.id}>
+            <MenuItem
+              key={item.id}
+              onClick={() => setActive(item.id)}
+              isActive={active === item.id}
+            >
               {item.icon}
               <span>{item.title}</span>
             </MenuItem>

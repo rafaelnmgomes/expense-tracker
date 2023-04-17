@@ -8,7 +8,6 @@ export const MainLayout = styled.div`
 `;
 
 export const InnerLayout = styled.div`
-  height: 100vh;
-  background-image: url(${(props) => props.bg});
-  position: relative;
+  padding: 2rem 1.5rem;
+  width: 100%;
 `;
