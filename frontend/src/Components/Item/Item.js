@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { dateFormat } from "../../utils/dateFormat";
 import {
   bitcoin,
   book,
@@ -100,7 +101,7 @@ function Item({
               {dollar} {amount}
             </Text>
             <Text>
-              {calender} {date}
+              {calender} {dateFormat(date)}
             </Text>
             <Text>
               {comment}
