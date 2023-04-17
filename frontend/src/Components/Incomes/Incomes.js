@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useGlobalContext } from "../../context/globalContext";
 import { InnerLayout } from "../../styles/Layouts";
 import Form from "../Form/Form";
-import IncomeItem from "../Item/Item";
+import Item from "../Item/Item";
 import {
   Container,
   Content,
@@ -12,8 +12,47 @@ import {
 } from "./Incomes.styled";
 
 function Incomes() {
-  const { addIncome, incomes, getIncomes, deleteIncome, totalIncome } =
+  const { addIncome, incomes, getIncomes, deleteIncome, totalIncomes } =
     useGlobalContext();
+
+  const formOptions = [
+    {
+      value: "",
+      label: "Select option",
+    },
+    {
+      value: "salary",
+      label: "Salary",
+    },
+    {
+      value: "freelancing",
+      label: "Freelancing",
+    },
+    {
+      value: "investments",
+      label: "Investiments",
+    },
+    {
+      value: "stocks",
+      label: "Stocks",
+    },
+    {
+      value: "bitcoin",
+      label: "Bitcoin",
+    },
+    {
+      value: "bank",
+      label: "Bank Transfer",
+    },
+    {
+      value: "youtube",
+      label: "Youtube",
+    },
+    {
+      value: "other",
+      label: "Other",
+    },
+  ];
 
   useEffect(() => {
     getIncomes();
@@ -24,18 +63,22 @@ function Incomes() {
       <InnerLayout>
         <h1>Incomes</h1>
         <TotalContainer>
-          Total Income: <Total>${totalIncome()}</Total>
+          Total Income: <Total>${totalIncomes()}</Total>
         </TotalContainer>
         <Content>
           <div>
-            <Form addIncome={addIncome} />
+            <Form
+              onSubmit={addIncome}
+              buttonText="Add income"
+              formOptions={formOptions}
+            />
           </div>
           <IncomeContainer>
             {incomes.map((income) => {
               const { _id, title, amount, date, category, description } =
                 income;
               return (
-                <IncomeItem
+                <Item
                   key={income._id}
                   id={_id}
                   title={title}

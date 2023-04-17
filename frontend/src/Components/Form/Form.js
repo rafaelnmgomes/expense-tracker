@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { useGlobalContext } from "../../context/globalContext";
 import { plus } from "../../utils/icons";
 import Button from "../Button/Button";
 import {
@@ -11,8 +10,7 @@ import {
   Select,
 } from "./Form.styled";
 
-function Form() {
-  const { addIncome } = useGlobalContext();
+function Form({ onSubmit, buttonText, formOptions }) {
   const [inputData, setInputData] = useState({
     title: "",
     amount: "",
@@ -28,9 +26,8 @@ function Form() {
   };
 
   const handleSubmit = (e) => {
-    console.log("here");
     e.preventDefault();
-    addIncome(inputData);
+    onSubmit(inputData);
   };
 
   return (
@@ -72,17 +69,13 @@ function Form() {
           id="category"
           onChange={handleInput("category")}
         >
-          <option value="" disabled>
-            Select Option
-          </option>
-          <option value="salary">Salary</option>
-          <option value="freelancing">Freelancing</option>
-          <option value="investments">Investiments</option>
-          <option value="stocks">Stocks</option>
-          <option value="bitcoin">Bitcoin</option>
-          <option value="bank">Bank Transfer</option>
-          <option value="youtube">Youtube</option>
-          <option value="other">Other</option>
+          {formOptions.map((option) => {
+            return (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            );
+          })}
         </Select>
       </SelectContainer>
       <InputContainer>
@@ -98,7 +91,7 @@ function Form() {
       </InputContainer>
       <div>
         <Button
-          name="Add Income"
+          name={buttonText}
           icon={plus}
           bPad=".8rem 1.6rem"
           bRad="30px"

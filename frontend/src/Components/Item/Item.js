@@ -32,7 +32,7 @@ import {
   ButtonContainer,
 } from "./Item.styled";
 
-function IncomeItem({
+function Item({
   id,
   title,
   amount,
@@ -125,4 +125,4 @@ function IncomeItem({
   );
 }
 
-export default IncomeItem;
+export default Item;
