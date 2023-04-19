@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import styled from "styled-components";
+import { Toaster } from "react-hot-toast";
 import Dashboard from "./Components/Dashboard/Dashboard";
 import Expenses from "./Components/Expenses/Expenses";
 import Incomes from "./Components/Incomes/Incomes";
@@ -36,6 +37,7 @@ function App() {
       <MainLayout>
         <Navigation active={active} setActive={setActive} />
         <Layout>{displayData()}</Layout>
+        <Toaster position="bottom-center" reverseOrder={false} />
       </MainLayout>
     </AppStyled>
   );

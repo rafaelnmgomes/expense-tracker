@@ -1,25 +1,21 @@
 import { createContext, useContext, useState } from "react";
+import { toast } from "react-hot-toast";
 import axios from "axios";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
-console.log(
-  "🚀 ~ file: globalContext.js:5 ~ process.env.REACT_APP_BASE_URL:",
-  process.env.REACT_APP_BASE_URL
-);
 
 const GlobalContext = createContext();
 
 export const GlobalProvider = ({ children }) => {
   const [incomes, setIncomes] = useState([]);
   const [expenses, setExpenses] = useState([]);
-  const [error, setError] = useState(null);
 
   const addIncome = async (income) => {
     try {
       const response = await axios.post(`${BASE_URL}/add-income`, income);
       getIncomes();
     } catch (error) {
-      setError(error.response.data.message);
+      toast.error(error.response.data.message);
     }
   };
 
@@ -28,7 +24,7 @@ export const GlobalProvider = ({ children }) => {
       const response = await axios.get(`${BASE_URL}/get-incomes`);
       setIncomes(response.data);
     } catch (error) {
-      setError(error.response.data.message);
+      toast.error(error.response.data.message);
     }
   };
 
@@ -37,7 +33,7 @@ export const GlobalProvider = ({ children }) => {
       const response = await axios.delete(`${BASE_URL}/delete-income/${id}`);
       getIncomes();
     } catch (error) {
-      setError(error.response.data.message);
+      toast.error(error.response.data.message);
     }
   };
 
@@ -54,7 +50,7 @@ export const GlobalProvider = ({ children }) => {
       const response = await axios.post(`${BASE_URL}/add-expense`, expense);
       getExpenses();
     } catch (error) {
-      setError(error.response.data.message);
+      toast.error(error.response.data.message);
     }
   };
 
@@ -63,7 +59,7 @@ export const GlobalProvider = ({ children }) => {
       const response = await axios.get(`${BASE_URL}/get-expenses`);
       setExpenses(response.data);
     } catch (error) {
-      setError(error.response.data.message);
+      toast.error(error.response.data.message);
     }
   };
 
@@ -72,7 +68,7 @@ export const GlobalProvider = ({ children }) => {
       const response = await axios.delete(`${BASE_URL}/delete-expense/${id}`);
       getExpenses();
     } catch (error) {
-      setError(error.response.data.message);
+      toast.error(error.response.data.message);
     }
   };
 
