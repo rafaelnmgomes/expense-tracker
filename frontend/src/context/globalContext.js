@@ -1,7 +1,11 @@
 import { createContext, useContext, useState } from "react";
 import axios from "axios";
 
-const BASE_URL = process.env.BASE_URL;
+const BASE_URL = process.env.REACT_APP_BASE_URL;
+console.log(
+  "🚀 ~ file: globalContext.js:5 ~ process.env.REACT_APP_BASE_URL:",
+  process.env.REACT_APP_BASE_URL
+);
 
 const GlobalContext = createContext();
 
